@@ -1,270 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Website</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
-<body>
-
-    <header class="header">
-        <a href="#home" class="logo"><img src="images/logo.jpg" alt=""></a>
-        <nav class="navbar">
-            <a href="#home">home</a>
-            <a href="#latest">products</a>
-         
-            <a href="#footer">contact</a>
-            <a href="#account">account</a>
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-        </nav>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Halcyon One · concept smartwatch</title>
+    <meta name="description" content="Halcyon One is a concept smartwatch, shown with a 3D model that turns as you scroll. A portfolio piece; nothing is for sale." />
+    <meta name="theme-color" content="#07080b" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/+esm",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="src/main.js"></script>
+  </head>
+  <body>
+    <div id="top-sentinel" aria-hidden="true"></div>
+    <header class="nav">
+      <a class="logo" href="#top" aria-label="Halcyon, back to top">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="8" y="5" width="16" height="22" rx="6" /><path d="M16 11v5l3 2" /></svg>
+        Halcyon
+      </a>
+      <nav aria-label="Sections">
+        <a href="#design">Design</a>
+        <a href="#health">Health</a>
+        <a href="#specs">Specs</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button class="bag-button" id="bag-open" type="button" aria-label="Open bag, 0 items">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></svg>
+        <span class="bag-count" id="bag-count"></span>
+      </button>
     </header>
 
-    <section id="home">
-        <h1>best shopping only with <br><span>smart shopping .</span></h1>
-        <p>Personalized Choices, Seamless Checkout, Sustainable Living. Elevate Your Retail Experience Today<br>Smart Shopping: Elevate Your Experience, Embrace the Future</p>
-        <a href="#products" class="btn">shop now <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        </a>
-    </section>
-
-
-    
-
-    <section id="featured">
-        <h3>featured products</h3>
-        <div class="box-container">
-            <div class="box">
-                <img src="images/p1.avif" alt="">
-                <h3>Nike Air Max 270 </h3>
-                <div class="stars">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                </div>
-                <p>$150.00</p>
-            </div>
-            <div class="box">
-                <img src="images/p2.avif" alt="">
-                <h3>  Khaki Chino Pants</h3>
-                <div class="stars">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                </div>
-                <p>$50.00</p>
-            </div>
-            <div class="box">
-                <img src="images/p4.avif" alt="">
-                <h3>Black Cotton T-Shirt</h3>
-                <div class="stars">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                </div>
-                <p>$20.00</p>
-            </div>
-            <div class="box">
-                <img src="images/p5.avif" alt="">
-                <h3>Adidas Ultraboost 21</h3>
-                <div class="stars">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                </div>
-                <p>$180.00</p>
-            </div>
+    <main id="top">
+      <!-- The model stays pinned while the chapters scroll past it. -->
+      <section class="story" id="story">
+        <div class="stage" aria-hidden="true">
+          <div class="halo"></div>
+          <canvas id="watch" title="Drag to turn the watch"></canvas>
+          <svg class="watch-fallback" viewBox="0 0 200 420" id="fallback">
+            <rect x="52" y="0" width="96" height="140" rx="18" class="strap" />
+            <rect x="52" y="280" width="96" height="140" rx="18" class="strap" />
+            <rect x="30" y="110" width="140" height="200" rx="44" class="case" />
+            <rect x="40" y="120" width="120" height="180" rx="36" fill="#050608" />
+            <rect x="168" y="160" width="12" height="30" rx="5" class="case" />
+            <text x="100" y="222" text-anchor="middle" class="face">10:09</text>
+          </svg>
+          <p class="drag-hint">drag to turn</p>
         </div>
-    </section>
-    
 
-    <section id="latest">
-        <h3>latest products</h3>
-        <div class="box-container">
-            <div class="box">
-                <img src="images/p6.avif" alt="">
-                <h3>Pink Cotton T-Shirt</h3>
-                <div class="stars">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                </div>
-                <p>$30.00</p>
+        <div class="chapters">
+          <div class="chapter hero" data-chapter="0">
+            <div class="copy">
+              <p class="eyebrow">Concept smartwatch</p>
+              <h1>Halcyon <span class="grad">One</span></h1>
+              <p class="lede">Time, beautifully kept. A titanium watch that tracks your heart, closes your rings and lasts a week on a charge.</p>
+              <div class="cta">
+                <a class="button primary" href="#buy">Choose yours</a>
+                <a class="button" href="#design">Take a closer look</a>
+              </div>
+              <p class="price-from">From <strong id="hero-price">₹24,900</strong></p>
             </div>
-            <div class="box">
-                <img src="images/p7.avif" alt="">
-                <h3>Casual Ensemble</h3>
-                <div class="stars">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                </div>
-                <p>$50.00</p>
+            <a class="scroll-cue" href="#design" aria-label="Scroll to the design chapter"><span></span></a>
+          </div>
+
+          <div class="chapter" id="design" data-chapter="1">
+            <div class="copy">
+              <p class="eyebrow">Design</p>
+              <h2>Titanium outside. Sapphire on top.</h2>
+              <p>A 10.7 mm case milled from grade 5 titanium, with a domed sapphire crystal that curves into the edge so there is no seam to catch on a sleeve.</p>
             </div>
-            <div class="box">
-                <img src="images/p8.avif" alt="">
-                <h3>Casual Urban Ensemble</h3>
-                <div class="stars">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                </div>
-                <p>$25.00</p>
+          </div>
+
+          <div class="chapter" id="health" data-chapter="2">
+            <div class="copy">
+              <p class="eyebrow">Health</p>
+              <h2>Rings that close themselves.</h2>
+              <p>Move, exercise and stand goals fill in as your day goes on. Heart rate, blood oxygen and sleep stages are measured quietly in the background.</p>
             </div>
-            <div class="box">
-                <img src="images/p5.avif" alt="">
-                <h3>Adidas Ultraboost 21</h3>
-                <div class="stars">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                </div>
-                <p>$125.00</p>
+          </div>
+
+          <div class="chapter" id="battery" data-chapter="3">
+            <div class="copy">
+              <p class="eyebrow">Battery</p>
+              <h2>Seven days on a single charge.</h2>
+              <p>Fourteen in low-power mode. And when it does need topping up, ten minutes on the puck gives you a full day back.</p>
             </div>
-            <div class="box">
-                <img src="images/p1.avif" alt="">
-                <h3>Slip-On Sneakers</h3>
-                <div class="stars">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                </div>
-                <p>$80.00</p>
+          </div>
+
+          <div class="chapter" id="colors" data-chapter="4">
+            <div class="copy">
+              <p class="eyebrow">Finishes</p>
+              <h2>Four finishes. One you.</h2>
+              <p>Pick a colour and watch the case and strap change.</p>
+              <div class="swatches" role="radiogroup" aria-label="Finish" data-swatches></div>
             </div>
-            <div class="box">
-                <img src="images/p2.avif" alt="">
-                <h3>Skinny Jeans (Women's)</h3>
-                <div class="stars">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                </div>
-                <p>$80.00</p>
-            </div>
-            <div class="box">
-                <img src="images/p4.avif" alt="">
-                <h3>Cropped Graphic Tee (Women's)</h3>
-                <div class="stars">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                </div>
-                <p>$30.00</p>
-            </div>
-            <div class="box">
-                <img src="images/p3.avif" alt="">
-                <h3>Denim Shorts</h3>
-                <div class="stars">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star-half" aria-hidden="true"></i>
-                </div>
-                <p>$35.00</p>
-            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-
-    <section class="promo">
-      
-        <h3>smart watch</h3>
-        <p>Her wrist adorned with a sleek watch, she effortlessly blended style and functionality, making every moment a statement in elegance.</p>
-        <a href="#" class="btn">buy now  <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-    </section>
-
-    <section class="clients">
-        <div class="box-container">
-            <div class="box">
-                <i class="fa fa-quote-right" aria-hidden="true"></i>
-                <p>Love my new watch! Exceptional craftsmanship, timeless style, and it effortlessly suits any occasion. Highly recommend!</p>
-                    <div class="stars">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star-half" aria-hidden="true"></i>
-                    </div>
-                <img src="images/cl1.avif" alt="">
-                <span>Emma Thompson</span>
-            </div>
-            <div class="box">
-                <i class="fa fa-quote-right" aria-hidden="true"></i>
-                <p>sneakers are a game-changer! Comfort meets style with every step. The fit is perfect Highly recommend</p>
-                    <div class="stars">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star-half" aria-hidden="true"></i>
-                    </div>
-                <img src="images/cl2.avif" alt="">
-                <span>Alex Johnson</span>
-            </div>
-            <div class="box">
-                <i class="fa fa-quote-right" aria-hidden="true"></i>
-                <p>Just got my hands on the Denim Jacket, and I'm obsessed! The quality is top-notch, and the fit is spot-on. </p>
-                    <div class="stars">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <i class="fa fa-star-half" aria-hidden="true"></i>
-                    </div>
-                <img src="images/cl3.avif" alt="">
-                <span>Sarah Miller</span>
-            </div>
+      <section class="section stats-section" aria-labelledby="stats-title">
+        <h2 id="stats-title" class="reveal">Built to be worn, all day and all night.</h2>
+        <div class="stats">
+          <div class="stat reveal" style="--i: 0">
+            <span class="num" data-count="7">0</span><span class="unit">days</span>
+            <p>Battery in normal use</p>
+          </div>
+          <div class="stat reveal" style="--i: 1">
+            <span class="num" data-count="50">0</span><span class="unit">m</span>
+            <p>Water resistance</p>
+          </div>
+          <div class="stat reveal" style="--i: 2">
+            <span class="num" data-count="2000">0</span><span class="unit">nits</span>
+            <p>Peak screen brightness</p>
+          </div>
+          <div class="stat reveal heart" style="--i: 3">
+            <svg viewBox="0 0 220 60" aria-hidden="true">
+              <path d="M0 32h48l8-18 12 36 12-44 10 30 8-4h40l8-14 10 26 10-12h54" />
+            </svg>
+            <p>Heart rhythm checked every few minutes</p>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <footer id="footer">
-        <div class="box-container">
-            <div class="box">
-                <h3>quick links</h3>
-                <a href="#home">home</a>
-            <a href="#latest">products</a>
-            <a href="#footer">contact</a>
-            <a href="#account">account</a>
-            </div>
-            <div class="box">
-                <h3>follow us</h3>
-                <a href="#">facebook</a>
-                <a href="#">instagram</a>
-                <a href="#">youtube</a>
-            </div>
-            <div class="box">
-                <h3>contact us</h3>
-                <a href="#">phone: 0654325678</a>
-                <a href="#">email: omaimaaouane@gmail.com</a>
-                <a href="#">address: morocco, casablanca-567890</a>
-            </div>
+      <section class="section specs" id="specs" aria-labelledby="specs-title">
+        <h2 id="specs-title" class="reveal">Specs</h2>
+        <dl class="spec-grid">
+          <div class="reveal" style="--i: 0"><dt>Case</dt><dd>Grade 5 titanium, 41 or 45 mm, 10.7 mm thin</dd></div>
+          <div class="reveal" style="--i: 1"><dt>Display</dt><dd>Always-on LTPO OLED, sapphire crystal, up to 2000 nits</dd></div>
+          <div class="reveal" style="--i: 2"><dt>Sensors</dt><dd>Optical heart, SpO₂, skin temperature, accelerometer, gyroscope</dd></div>
+          <div class="reveal" style="--i: 3"><dt>Battery</dt><dd>7 days typical, 14 in low-power mode, 0–80% in 45 minutes</dd></div>
+          <div class="reveal" style="--i: 4"><dt>Durability</dt><dd>Water resistant to 50 m, dust resistant</dd></div>
+          <div class="reveal" style="--i: 5"><dt>Connectivity</dt><dd>Bluetooth 5.4, Wi-Fi, NFC, dual-band GPS</dd></div>
+        </dl>
+      </section>
+
+      <section class="section buy" id="buy" aria-labelledby="buy-title">
+        <div class="buy-preview reveal" aria-hidden="true">
+          <svg viewBox="0 0 200 420" class="watch-flat">
+            <rect x="52" y="0" width="96" height="140" rx="18" class="strap" />
+            <rect x="52" y="280" width="96" height="140" rx="18" class="strap" />
+            <rect x="30" y="110" width="140" height="200" rx="44" class="case" />
+            <rect x="40" y="120" width="120" height="180" rx="36" fill="#050608" />
+            <rect x="168" y="160" width="12" height="30" rx="5" class="case" />
+            <text x="100" y="222" text-anchor="middle" class="face">10:09</text>
+          </svg>
         </div>
-        <div class="credit">created by <span>@Jeevan</span></div>
+        <div class="buy-form reveal" style="--i: 1">
+          <p class="eyebrow">Halcyon One</p>
+          <h2 id="buy-title">Make it yours.</h2>
+          <fieldset>
+            <legend>Finish: <strong id="color-name">Midnight</strong></legend>
+            <div class="swatches" role="radiogroup" aria-label="Finish" data-swatches></div>
+          </fieldset>
+          <fieldset>
+            <legend>Case size</legend>
+            <div class="sizes" id="sizes"></div>
+          </fieldset>
+          <p class="price" id="price">₹24,900</p>
+          <button class="button primary add" id="add" type="button">Add to bag</button>
+          <p class="note">A concept product made for a portfolio. The bag works; checkout does not.</p>
+        </div>
+      </section>
+
+      <section class="section faq" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title" class="reveal">Questions</h2>
+        <details class="reveal">
+          <summary>Does it work with Android and iPhone?</summary>
+          <p>In this concept, yes: it pairs over Bluetooth with either and syncs health data to the phone's own health app.</p>
+        </details>
+        <details class="reveal">
+          <summary>Can I swim with it?</summary>
+          <p>It is water resistant to 50 metres, so pool and open-water swims are fine. Not for diving.</p>
+        </details>
+        <details class="reveal">
+          <summary>Which size should I pick?</summary>
+          <p>41 mm suits wrists up to about 17 cm; 45 mm has a larger screen and a slightly bigger battery.</p>
+        </details>
+        <details class="reveal">
+          <summary>Is this a real product?</summary>
+          <p>No. Halcyon One is a concept made to show web design and 3D motion. Nothing on this page is for sale and no payment is taken.</p>
+        </details>
+      </section>
+    </main>
+
+    <dialog class="drawer" id="bag" aria-labelledby="bag-title">
+      <header>
+        <h2 id="bag-title">Your bag</h2>
+        <button class="close" id="bag-close" type="button" aria-label="Close bag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+        </button>
+      </header>
+      <ul class="lines" id="bag-lines"></ul>
+      <p class="empty" id="bag-empty">Your bag is empty.</p>
+      <footer>
+        <p class="total">Total <strong id="bag-total">₹0</strong></p>
+        <button class="button primary" type="button" disabled>Checkout unavailable</button>
+        <p class="note">Halcyon One is a concept. No orders or payments are taken.</p>
+      </footer>
+    </dialog>
+
+    <footer class="footer">
+      <p>Halcyon One is a concept product designed for a portfolio. Not for sale.</p>
+      <p>3D model built in code with <a href="https://threejs.org/" target="_blank" rel="noopener">Three.js</a> · by <a href="https://github.com/Jeevan2410" target="_blank" rel="noopener">Jeevan</a></p>
     </footer>
-    
-
-</body>
+    <p class="visually-hidden" id="announce" aria-live="polite"></p>
+  </body>
 </html>
