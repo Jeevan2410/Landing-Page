@@ -1,0 +1,12 @@
+{
+  "name": "halcyon-one",
+  "private": true,
+  "type": "module",
+  "description": "Halcyon One: a concept smartwatch launch page with a scroll-driven Three.js model; no build step",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
